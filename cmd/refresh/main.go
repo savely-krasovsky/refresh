@@ -37,7 +37,7 @@ func parseFlags(args []string) (cliFlags, error) {
 	fs.StringVar(&f.configPath, "f", "", "Config file to read (.toml or .yaml)")
 	fs.StringVar(&f.ignoreDir, "id", "", "Ignore directories (comma-separated)")
 	fs.StringVar(&f.ignoreFile, "if", "", "Ignore files (comma-separated)")
-	fs.StringVar(&f.ignoreExt, "ie", "", "Watched extensions (comma-separated)")
+	fs.StringVar(&f.ignoreExt, "ie", "*", "Watched extensions (comma-separated; \"*\" watches all, empty watches nothing)")
 	fs.IntVar(&f.debounce, "d", 1000, "Debounce time in milliseconds")
 	fs.BoolVar(&f.version, "v", false, "Print version")
 	fs.BoolVar(&f.gitIgnore, "git", false, "Read .gitignore in the root")

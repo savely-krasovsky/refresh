@@ -77,15 +77,27 @@ func Test_isWatchedExtension(t *testing.T) {
 			wantIsWatched: false,
 		},
 		{
-			name:          "empty filter watches all extensions (default config)",
+			name:          "empty filter watches nothing (off-switch)",
 			path:          "/some/path/file.go",
 			watchedExten:  nil,
+			wantIsWatched: false,
+		},
+		{
+			name:          "empty filter watches nothing, extensionless too",
+			path:          "/some/path/Makefile",
+			watchedExten:  nil,
+			wantIsWatched: false,
+		},
+		{
+			name:          "star watches all extensions",
+			path:          "/some/path/file.go",
+			watchedExten:  []string{"*"},
 			wantIsWatched: true,
 		},
 		{
-			name:          "empty filter watches extensionless files too",
+			name:          "star watches extensionless files too",
 			path:          "/some/path/Makefile",
-			watchedExten:  nil,
+			watchedExten:  []string{"*"},
 			wantIsWatched: true,
 		},
 	}

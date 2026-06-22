@@ -61,7 +61,7 @@ type Config struct {
 type Ignore struct {
 	Dir          []string `toml:"dir"               yaml:"dir"`               // Directories to ignore, e.g. node_modules
 	File         []string `toml:"file"              yaml:"file"`              // Files to ignore
-	WatchedExten []string `toml:"watched_extension" yaml:"watched_extension"` // Extensions to watch; anything else is ignored. Empty watches all files.
+	WatchedExten []string `toml:"watched_extension" yaml:"watched_extension"` // Extensions to watch; anything else is ignored. Use "*" to watch all files; empty watches nothing.
 	IgnoreGit    bool     `toml:"git"               yaml:"git"`              // When true, .gitignore entries in the root are also ignored
 }
 

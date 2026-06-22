@@ -47,9 +47,10 @@ func DefaultEngineConfig() Config {
 		LogLevel: "warn",
 		Debounce: 1000,
 		Ignore: Ignore{
-			Dir:       []string{".git", ".idea", ".node_modules", "vendor"},
-			File:      []string{".DS_Store", ".gitignore", ".gitkeep"},
-			IgnoreGit: true,
+			Dir:          []string{".git", ".idea", ".node_modules", "vendor"},
+			File:         []string{".DS_Store", ".gitignore", ".gitkeep"},
+			WatchedExten: []string{"*"},
+			IgnoreGit:    true,
 		},
 		ExecStruct: make([]process.Execute, 0),
 	}

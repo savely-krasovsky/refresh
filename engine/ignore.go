@@ -32,9 +32,17 @@ func (i *Ignore) shouldIgnore(path string) bool {
 }
 
 func (i *Ignore) isWatchedExtension(path string) bool {
-	// No configured filter means watch everything; this is the default config
-	// and the bare-CLI case, so it must reload rather than ignore every change.
+	// An empty filter means watch nothing: it is the off-switch users reach for
+	// by leaving watched_extension blank/commented out. Watch-all is opt-in via
+	// an explicit "*" entry (matched through patternMatch below), which the
+	// bare-CLI and default-config cases set so they still reload.
 	if len(i.WatchedExten) == 0 {
+		return false
+	}
+
+	// "*" is the explicit watch-all token; match every path, including those
+	// without an extension.
+	if slices.Contains(i.WatchedExten, "*") {
 		return true
 	}
 
